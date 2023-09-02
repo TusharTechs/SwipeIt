@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
+import BluePage from './bluePage';
+import GreenPage from './GreenPage';
+import YellowPage from './YellowPage';
+import OrangePage from './OrangePage';
+import RedPage from './RedPage';
+
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="BluePage">
+        <Stack.Screen name="BluePage" component={BluePage} />
+        <Stack.Screen name="GreenPage" component={GreenPage} />
+        <Stack.Screen name="YellowPage" component={YellowPage} />
+        <Stack.Screen name="OrangePage" component={OrangePage} />
+        <Stack.Screen name="RedPage" component={RedPage} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
